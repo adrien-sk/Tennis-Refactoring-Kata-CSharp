@@ -24,42 +24,35 @@ namespace Tennis
 
         public string GetScore()
         {
-            var score = "";
-
             if (IsScoreDeuce())
-                score = "Deuce";
+                return "Deuce";
 
             if (IsScoreAll())
             {
-                score = scoreLabels.GetValueOrDefault(player1Point) + "-All";
-            }
-
-            if (DoesPlayerHasAdvantage(player1Point, player2Point))
-            {
-                score = "Advantage player1";
-            }
-
-            if (DoesPlayerHasAdvantage(player2Point, player1Point))
-            {
-                score = "Advantage player2";
+                return scoreLabels.GetValueOrDefault(player1Point) + "-All";
             }
 
             if (DoesPlayerWins(player1Point, player2Point))
             {
-                score = "Win for player1";
+                return "Win for player1";
             }
 
             if (DoesPlayerWins(player2Point, player1Point))
             {
-                score = "Win for player2";
+                return "Win for player2";
             }
 
-            if (string.IsNullOrEmpty(score))
+            if (DoesPlayerHasAdvantage(player1Point, player2Point))
             {
-                score = scoreLabels.GetValueOrDefault(player1Point) + "-" + scoreLabels.GetValueOrDefault(player2Point);
+                return "Advantage player1";
             }
 
-            return score;
+            if (DoesPlayerHasAdvantage(player2Point, player1Point))
+            {
+                return "Advantage player2";
+            }
+
+            return scoreLabels.GetValueOrDefault(player1Point) + "-" + scoreLabels.GetValueOrDefault(player2Point);
         }
 
         private bool IsScoreDeuce()
