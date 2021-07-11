@@ -28,7 +28,7 @@ namespace Tennis
         public string GetScore()
         {
             var score = "";
-            if (player1Point == player2Point && player1Point < 3)
+            if (IsScoreAll())
             {
                 if (player1Point == 0)
                     score = scoreLabels.GetValueOrDefault(0);
@@ -38,7 +38,7 @@ namespace Tennis
                     score = scoreLabels.GetValueOrDefault(2);
                 score += "-All";
             }
-            if (player1Point == player2Point && player1Point > 2)
+            if (IsScoreDeuce())
                 score = "Deuce";
 
             if (player1Point > 0 && player2Point == 0)
@@ -110,6 +110,16 @@ namespace Tennis
                 score = "Win for player2";
             }
             return score;
+        }
+
+        private bool IsScoreDeuce()
+        {
+            return player1Point == player2Point && player1Point > 2;
+        }
+
+        private bool IsScoreAll()
+        {
+            return player1Point == player2Point && player1Point < 3;
         }
 
         private void P1Score()
