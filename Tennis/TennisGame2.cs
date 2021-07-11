@@ -74,12 +74,12 @@ namespace Tennis
                 score = "Advantage player2";
             }
 
-            if (player1Point >= 4 && player2Point >= 0 && (player1Point - player2Point) >= 2)
+            if (DoesPlayerWins(player1Point, player2Point))
             {
                 score = "Win for player1";
             }
 
-            if (player2Point >= 4 && player1Point >= 0 && (player2Point - player1Point) >= 2)
+            if (DoesPlayerWins(player2Point, player1Point))
             {
                 score = "Win for player2";
             }
@@ -101,6 +101,12 @@ namespace Tennis
         private bool DoesPlayerHasAdvantage(int firstPlayerPoint, int secondPlayerPoint)
         {
             return firstPlayerPoint > secondPlayerPoint && secondPlayerPoint >= 3;
+        }
+
+        //Does 1st parameter player Wins over 2nd parameter player ?
+        private bool DoesPlayerWins(int firstPlayerPoint, int secondPlayerPoint)
+        {
+            return firstPlayerPoint >= 4 && (firstPlayerPoint - secondPlayerPoint) >= 2;
         }
 
         private void P1Score()
