@@ -103,22 +103,6 @@ namespace Tennis
             return score;
         }
 
-        public void AddToPlayer1Score(int number)
-        {
-            for (int i = 0; i < number; i++)
-            {
-                P1Score();
-            }
-        }
-
-        public void AddToPlayer2Score(int number)
-        {
-            for (var i = 0; i < number; i++)
-            {
-                P2Score();
-            }
-        }
-
         private void P1Score()
         {
             player1Point++;
