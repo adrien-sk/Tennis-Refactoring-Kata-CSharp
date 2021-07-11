@@ -13,9 +13,6 @@ namespace Tennis
 
         private int player1Point = 0;
         private int player2Point = 0;
-
-        private string player1Res = "";
-        private string player2Res = "";
         private string player1Name;
         private string player2Name;
 
@@ -59,9 +56,7 @@ namespace Tennis
 
             if (string.IsNullOrEmpty(score))
             {
-                player1Res = scoreLabels.GetValueOrDefault(player1Point);
-                player2Res = scoreLabels.GetValueOrDefault(player2Point);
-                score = player1Res + "-" + player2Res;
+                score = scoreLabels.GetValueOrDefault(player1Point) + "-" + scoreLabels.GetValueOrDefault(player2Point);
             }
 
             return score;
