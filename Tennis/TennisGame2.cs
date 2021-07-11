@@ -29,46 +29,19 @@ namespace Tennis
         {
             var score = "";
 
-            if (IsScoreAll())
-            {
-                score = scoreLabels.GetValueOrDefault(player1Point) + "-All";
-            }
-
             if (IsScoreDeuce())
                 score = "Deuce";
 
-            if (player1Point > 0 && player2Point == 0)
+            if (IsScoreAll())
             {
-                player1Res = scoreLabels.GetValueOrDefault(player1Point);
-                player2Res = scoreLabels.GetValueOrDefault(0);
-                score = player1Res + "-" + player2Res;
-            }
-
-            if (player2Point > 0 && player1Point == 0)
-            {
-                player1Res = scoreLabels.GetValueOrDefault(0);
-                player2Res = scoreLabels.GetValueOrDefault(player2Point);
-                score = player1Res + "-" + player2Res;
-            }
-
-            if (player1Point > player2Point && player1Point < 4)
-            {
-                player1Res = scoreLabels.GetValueOrDefault(player1Point);
-                player2Res = scoreLabels.GetValueOrDefault(player2Point);
-                score = player1Res + "-" + player2Res;
-            }
-
-            if (player2Point > player1Point && player2Point < 4)
-            {
-                player1Res = scoreLabels.GetValueOrDefault(player1Point);
-                player2Res = scoreLabels.GetValueOrDefault(player2Point);
-                score = player1Res + "-" + player2Res;
+                score = scoreLabels.GetValueOrDefault(player1Point) + "-All";
             }
 
             if (DoesPlayerHasAdvantage(player1Point, player2Point))
             {
                 score = "Advantage player1";
             }
+
             if (DoesPlayerHasAdvantage(player2Point, player1Point))
             {
                 score = "Advantage player2";
@@ -82,6 +55,13 @@ namespace Tennis
             if (DoesPlayerWins(player2Point, player1Point))
             {
                 score = "Win for player2";
+            }
+
+            if (string.IsNullOrEmpty(score))
+            {
+                player1Res = scoreLabels.GetValueOrDefault(player1Point);
+                player2Res = scoreLabels.GetValueOrDefault(player2Point);
+                score = player1Res + "-" + player2Res;
             }
 
             return score;
