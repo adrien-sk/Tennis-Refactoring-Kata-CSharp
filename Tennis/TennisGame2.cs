@@ -103,7 +103,7 @@ namespace Tennis
             return score;
         }
 
-        public void SetP1Score(int number)
+        public void AddToPlayer1Score(int number)
         {
             for (int i = 0; i < number; i++)
             {
@@ -111,7 +111,7 @@ namespace Tennis
             }
         }
 
-        public void SetP2Score(int number)
+        public void AddToPlayer2Score(int number)
         {
             for (var i = 0; i < number; i++)
             {
