@@ -34,22 +34,22 @@ namespace Tennis
 
             if (DoesPlayerWins(player1Point, player2Point))
             {
-                return "Win for player1";
+                return "Win for " + player1Name;
             }
 
             if (DoesPlayerWins(player2Point, player1Point))
             {
-                return "Win for player2";
+                return "Win for " + player2Name;
             }
 
             if (DoesPlayerHasAdvantage(player1Point, player2Point))
             {
-                return "Advantage player1";
+                return "Advantage " + player1Name;
             }
 
             if (DoesPlayerHasAdvantage(player2Point, player1Point))
             {
-                return "Advantage player2";
+                return "Advantage " + player2Name;
             }
 
             return scoreLabels.GetValueOrDefault(player1Point) + "-" + scoreLabels.GetValueOrDefault(player2Point);
