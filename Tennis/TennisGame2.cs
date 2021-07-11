@@ -39,53 +39,29 @@ namespace Tennis
 
             if (player1Point > 0 && player2Point == 0)
             {
-                if (player1Point == 1)
-                    player1Res = scoreLabels.GetValueOrDefault(1);
-                if (player1Point == 2)
-                    player1Res = scoreLabels.GetValueOrDefault(2);
-                if (player1Point == 3)
-                    player1Res = scoreLabels.GetValueOrDefault(3);
-
+                player1Res = scoreLabels.GetValueOrDefault(player1Point);
                 player2Res = scoreLabels.GetValueOrDefault(0);
                 score = player1Res + "-" + player2Res;
             }
 
             if (player2Point > 0 && player1Point == 0)
             {
-                if (player2Point == 1)
-                    player2Res = scoreLabels.GetValueOrDefault(1);
-                if (player2Point == 2)
-                    player2Res = scoreLabels.GetValueOrDefault(2);
-                if (player2Point == 3)
-                    player2Res = scoreLabels.GetValueOrDefault(3);
-
                 player1Res = scoreLabels.GetValueOrDefault(0);
+                player2Res = scoreLabels.GetValueOrDefault(player2Point);
                 score = player1Res + "-" + player2Res;
             }
 
             if (player1Point > player2Point && player1Point < 4)
             {
-                if (player1Point == 2)
-                    player1Res = scoreLabels.GetValueOrDefault(2);
-                if (player1Point == 3)
-                    player1Res = scoreLabels.GetValueOrDefault(3);
-                if (player2Point == 1)
-                    player2Res = scoreLabels.GetValueOrDefault(1);
-                if (player2Point == 2)
-                    player2Res = scoreLabels.GetValueOrDefault(2);
+                player1Res = scoreLabels.GetValueOrDefault(player1Point);
+                player2Res = scoreLabels.GetValueOrDefault(player2Point);
                 score = player1Res + "-" + player2Res;
             }
 
             if (player2Point > player1Point && player2Point < 4)
             {
-                if (player2Point == 2)
-                    player2Res = scoreLabels.GetValueOrDefault(2);
-                if (player2Point == 3)
-                    player2Res = scoreLabels.GetValueOrDefault(3);
-                if (player1Point == 1)
-                    player1Res = scoreLabels.GetValueOrDefault(1);
-                if (player1Point == 2)
-                    player1Res = scoreLabels.GetValueOrDefault(2);
+                player1Res = scoreLabels.GetValueOrDefault(player1Point);
+                player2Res = scoreLabels.GetValueOrDefault(player2Point);
                 score = player1Res + "-" + player2Res;
             }
 
