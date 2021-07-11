@@ -1,7 +1,16 @@
+using System.Collections.Generic;
+
 namespace Tennis
 {
     public class TennisGame2 : ITennisGame
     {
+        private Dictionary<int, string> scoreLabels = new Dictionary<int, string>{
+            { 0, "Love" },
+            { 1, "Fifteen" },
+            { 2, "Thirty" },
+            { 3, "Forty" }
+        };
+
         private int player1Point = 0;
         private int player2Point = 0;
 
@@ -22,11 +31,11 @@ namespace Tennis
             if (player1Point == player2Point && player1Point < 3)
             {
                 if (player1Point == 0)
-                    score = "Love";
+                    score = scoreLabels.GetValueOrDefault(0);
                 if (player1Point == 1)
-                    score = "Fifteen";
+                    score = scoreLabels.GetValueOrDefault(1);
                 if (player1Point == 2)
-                    score = "Thirty";
+                    score = scoreLabels.GetValueOrDefault(2);
                 score += "-All";
             }
             if (player1Point == player2Point && player1Point > 2)
@@ -35,50 +44,50 @@ namespace Tennis
             if (player1Point > 0 && player2Point == 0)
             {
                 if (player1Point == 1)
-                    player1Res = "Fifteen";
+                    player1Res = scoreLabels.GetValueOrDefault(1);
                 if (player1Point == 2)
-                    player1Res = "Thirty";
+                    player1Res = scoreLabels.GetValueOrDefault(2);
                 if (player1Point == 3)
-                    player1Res = "Forty";
+                    player1Res = scoreLabels.GetValueOrDefault(3);
 
-                player2Res = "Love";
+                player2Res = scoreLabels.GetValueOrDefault(0);
                 score = player1Res + "-" + player2Res;
             }
             if (player2Point > 0 && player1Point == 0)
             {
                 if (player2Point == 1)
-                    player2Res = "Fifteen";
+                    player2Res = scoreLabels.GetValueOrDefault(1);
                 if (player2Point == 2)
-                    player2Res = "Thirty";
+                    player2Res = scoreLabels.GetValueOrDefault(2);
                 if (player2Point == 3)
-                    player2Res = "Forty";
+                    player2Res = scoreLabels.GetValueOrDefault(3);
 
-                player1Res = "Love";
+                player1Res = scoreLabels.GetValueOrDefault(0);
                 score = player1Res + "-" + player2Res;
             }
 
             if (player1Point > player2Point && player1Point < 4)
             {
                 if (player1Point == 2)
-                    player1Res = "Thirty";
+                    player1Res = scoreLabels.GetValueOrDefault(2);
                 if (player1Point == 3)
-                    player1Res = "Forty";
+                    player1Res = scoreLabels.GetValueOrDefault(3);
                 if (player2Point == 1)
-                    player2Res = "Fifteen";
+                    player2Res = scoreLabels.GetValueOrDefault(1);
                 if (player2Point == 2)
-                    player2Res = "Thirty";
+                    player2Res = scoreLabels.GetValueOrDefault(2);
                 score = player1Res + "-" + player2Res;
             }
             if (player2Point > player1Point && player2Point < 4)
             {
                 if (player2Point == 2)
-                    player2Res = "Thirty";
+                    player2Res = scoreLabels.GetValueOrDefault(2);
                 if (player2Point == 3)
-                    player2Res = "Forty";
+                    player2Res = scoreLabels.GetValueOrDefault(3);
                 if (player1Point == 1)
-                    player1Res = "Fifteen";
+                    player1Res = scoreLabels.GetValueOrDefault(1);
                 if (player1Point == 2)
-                    player1Res = "Thirty";
+                    player1Res = scoreLabels.GetValueOrDefault(2);
                 score = player1Res + "-" + player2Res;
             }
 
