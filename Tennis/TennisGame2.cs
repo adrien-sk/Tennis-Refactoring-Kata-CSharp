@@ -28,16 +28,12 @@ namespace Tennis
         public string GetScore()
         {
             var score = "";
+
             if (IsScoreAll())
             {
-                if (player1Point == 0)
-                    score = scoreLabels.GetValueOrDefault(0);
-                if (player1Point == 1)
-                    score = scoreLabels.GetValueOrDefault(1);
-                if (player1Point == 2)
-                    score = scoreLabels.GetValueOrDefault(2);
-                score += "-All";
+                score = scoreLabels.GetValueOrDefault(player1Point) + "-All";
             }
+
             if (IsScoreDeuce())
                 score = "Deuce";
 
@@ -53,6 +49,7 @@ namespace Tennis
                 player2Res = scoreLabels.GetValueOrDefault(0);
                 score = player1Res + "-" + player2Res;
             }
+
             if (player2Point > 0 && player1Point == 0)
             {
                 if (player2Point == 1)
@@ -78,6 +75,7 @@ namespace Tennis
                     player2Res = scoreLabels.GetValueOrDefault(2);
                 score = player1Res + "-" + player2Res;
             }
+
             if (player2Point > player1Point && player2Point < 4)
             {
                 if (player2Point == 2)
@@ -105,10 +103,12 @@ namespace Tennis
             {
                 score = "Win for player1";
             }
+
             if (player2Point >= 4 && player1Point >= 0 && (player2Point - player1Point) >= 2)
             {
                 score = "Win for player2";
             }
+
             return score;
         }
 
