@@ -68,6 +68,17 @@ namespace Tennis
         }
 
         [Theory]
+        [InlineData("Adrien", "Lorem", 0, 0, "Love-All")]
+        [InlineData("Albert", "Ipsum", 2, 3, "Thirty-Forty")]
+        [InlineData("Cedric", "Dolore", 5, 4, "Advantage Cedric")]
+        [InlineData("Maxime", "Sit", 14, 16, "Win for Sit")]
+        public void Tennis2TestCustomNames(string p1Name, string p2Name, int p1, int p2, string expected)
+        {
+            var game = new TennisGame2(p1Name, p2Name);
+            CheckAllScoresCustomNames(game, p1Name, p2Name, p1, p2, expected);
+        }
+
+        [Theory]
         [ClassData(typeof(TestDataGenerator))]
         public void Tennis3Test(int p1, int p2, string expected)
         {
@@ -84,6 +95,20 @@ namespace Tennis
                     game.WonPoint("player1");
                 if (i < player2Score)
                     game.WonPoint("player2");
+            }
+
+            Assert.Equal(expectedScore, game.GetScore());
+        }
+
+        private void CheckAllScoresCustomNames(ITennisGame game, string p1Name, string p2Name, int player1Score, int player2Score, string expectedScore)
+        {
+            var highestScore = Math.Max(player1Score, player2Score);
+            for (var i = 0; i < highestScore; i++)
+            {
+                if (i < player1Score)
+                    game.WonPoint(p1Name);
+                if (i < player2Score)
+                    game.WonPoint(p2Name);
             }
 
             Assert.Equal(expectedScore, game.GetScore());
