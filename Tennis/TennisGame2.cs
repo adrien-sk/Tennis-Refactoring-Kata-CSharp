@@ -65,12 +65,11 @@ namespace Tennis
                 score = player1Res + "-" + player2Res;
             }
 
-            if (player1Point > player2Point && player2Point >= 3)
+            if (DoesPlayerHasAdvantage(player1Point, player2Point))
             {
                 score = "Advantage player1";
             }
-
-            if (player2Point > player1Point && player1Point >= 3)
+            if (DoesPlayerHasAdvantage(player2Point, player1Point))
             {
                 score = "Advantage player2";
             }
@@ -96,6 +95,12 @@ namespace Tennis
         private bool IsScoreAll()
         {
             return player1Point == player2Point && player1Point < 3;
+        }
+
+        //Does 1st parameter player, has advantage over 2nd parameter player ?
+        private bool DoesPlayerHasAdvantage(int firstPlayerPoint, int secondPlayerPoint)
+        {
+            return firstPlayerPoint > secondPlayerPoint && secondPlayerPoint >= 3;
         }
 
         private void P1Score()
